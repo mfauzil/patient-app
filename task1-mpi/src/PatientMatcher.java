@@ -85,6 +85,6 @@ public class PatientMatcher {
         System.out.println("Sample 2 -> " + match(s2, existing));
         System.out.println("Sample 3 -> " + match(s3, existing));
         System.out.println("Sample 4 -> " + match(s4, existing));
-        System.out.println("Sample 4 -> " + match(s5, existing));
+        System.out.println("Sample 5 -> " + match(s5, existing));
     }
 }
