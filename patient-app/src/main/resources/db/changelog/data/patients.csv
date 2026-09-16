@@ -1,0 +1,26 @@
+pid,first_name,last_name,date_of_birth,gender,phone_no,address_line,suburb,state,postcode
+P001,Ali,Rahman,1990-01-15,MALE,0412345678,12 George St,Sydney,NSW,2000
+P002,Budi,Rahman,1985-07-23,MALE,0412345679,45 Pitt St,Sydney,NSW,2000
+P003,Sarah,Wilson,1992-03-08,FEMALE,0433111222,9 Collins St,Melbourne,VIC,3000
+P004,James,Nguyen,1978-11-30,MALE,0433111223,22 Queen St,Brisbane,QLD,4000
+P005,Emily,Chen,1995-05-19,FEMALE,0444222333,7 King William St,Adelaide,SA,5000
+P006,Michael,Brown,1982-09-02,MALE,0444222334,18 Hay St,Perth,WA,6000
+P007,Olivia,Taylor,1998-12-11,FEMALE,0455333444,3 Elizabeth St,Hobart,TAS,7000
+P008,Daniel,Smith,1975-04-27,MALE,0455333445,66 Mitchell St,Darwin,NT,0800
+P009,Sophia,Johnson,1989-08-14,FEMALE,0466444555,14 Northbourne Ave,Canberra,ACT,2600
+P010,Ahmad,Hassan,1993-02-06,MALE,0466444556,88 Swanston St,Melbourne,VIC,3000
+P011,Grace,Lee,1987-06-21,FEMALE,0477555666,31 Adelaide St,Brisbane,QLD,4000
+P012,Thomas,Anderson,1980-10-09,MALE,0477555667,52 Murray St,Perth,WA,6000
+P013,Isabella,Martin,1996-01-25,FEMALE,0488666777,5 Rundle Mall,Adelaide,SA,5000
+P014,William,Tran,1991-07-17,MALE,0488666778,27 Liverpool St,Sydney,NSW,2000
+P015,Charlotte,White,1984-03-03,FEMALE,0499777888,41 Bourke St,Melbourne,VIC,3000
+P016,Joshua,Patel,1999-09-28,MALE,0499777889,13 Edward St,Brisbane,QLD,4000
+P017,Amelia,Harris,1977-05-12,FEMALE,0412888999,60 St Georges Tce,Perth,WA,6000
+P018,Ethan,Kumar,1994-11-04,MALE,0412889000,8 Franklin St,Adelaide,SA,5000
+P019,Mia,Clark,1986-08-30,FEMALE,0423999111,19 Davey St,Hobart,TAS,7000
+P020,Benjamin,Singh,1990-12-22,MALE,0423999112,74 Smith St,Darwin,NT,0800
+P021,Ava,Lewis,1997-04-16,FEMALE,0434111222,2 London Cct,Canberra,ACT,2600
+P022,Lucas,Wong,1983-06-07,MALE,0434111223,36 Market St,Sydney,NSW,2000
+P023,Chloe,Walker,1992-10-29,FEMALE,0445222333,58 Flinders St,Melbourne,VIC,3000
+P024,Noah,Ali,1988-02-13,MALE,0445222334,11 Ann St,Brisbane,QLD,4000
+P025,Zoe,Robinson,1979-07-05,FEMALE,0456333444,25 Grenfell St,Adelaide,SA,5000

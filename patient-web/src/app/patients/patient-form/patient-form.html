@@ -1,0 +1,102 @@
+<div class="toolbar">
+    <h1>{{ id() === null ? 'New Patient' : 'Edit Patient' }}</h1>
+    <a class="btn" routerLink="/patients">← Back</a>
+</div>
+
+@if (loadError()) {
+<p class="alert">{{ loadError() }}</p>
+} @else {
+
+@if (formError()) {
+<p class="alert">{{ formError() }}</p>
+}
+
+<form [formGroup]="form" (ngSubmit)="save()" novalidate>
+
+    <fieldset>
+        <legend>Patient Details</legend>
+
+        <div class="row">
+            <label>
+                PID
+                <input formControlName="pid" [class.invalid]="hasError('pid')" />
+                @if (hasError('pid')) { <small class="err">{{ errorMessage('pid') }}</small> }
+            </label>
+
+            <label>
+                Date of Birth
+                <input type="date" formControlName="dateOfBirth" [class.invalid]="hasError('dateOfBirth')" />
+                @if (hasError('dateOfBirth')) { <small class="err">{{ errorMessage('dateOfBirth') }}</small> }
+            </label>
+        </div>
+
+        <div class="row">
+            <label>
+                First Name
+                <input formControlName="firstName" [class.invalid]="hasError('firstName')" />
+                @if (hasError('firstName')) { <small class="err">{{ errorMessage('firstName') }}</small> }
+            </label>
+
+            <label>
+                Last Name
+                <input formControlName="lastName" [class.invalid]="hasError('lastName')" />
+                @if (hasError('lastName')) { <small class="err">{{ errorMessage('lastName') }}</small> }
+            </label>
+        </div>
+
+        <div class="row">
+            <label>
+                Gender
+                <select formControlName="gender">
+                    @for (g of genders; track g) { <option [value]="g">{{ g }}</option> }
+                </select>
+            </label>
+
+            <label>
+                Phone Number
+                <input formControlName="phoneNo" [class.invalid]="hasError('phoneNo')" placeholder="0412 345 678" />
+                @if (hasError('phoneNo')) { <small class="err">{{ errorMessage('phoneNo') }}</small> }
+            </label>
+        </div>
+    </fieldset>
+
+    <fieldset formGroupName="address">
+        <legend>Australian Address</legend>
+
+        <label>
+            Address
+            <input formControlName="addressLine" [class.invalid]="hasError('address.addressLine')" />
+            @if (hasError('address.addressLine')) { <small class="err">{{ errorMessage('address.addressLine') }}</small>
+            }
+        </label>
+
+        <div class="row">
+            <label>
+                Suburb
+                <input formControlName="suburb" [class.invalid]="hasError('address.suburb')" />
+                @if (hasError('address.suburb')) { <small class="err">{{ errorMessage('address.suburb') }}</small> }
+            </label>
+
+            <label>
+                State
+                <select formControlName="state">
+                    @for (s of states; track s) { <option [value]="s">{{ s }}</option> }
+                </select>
+            </label>
+
+            <label>
+                Postcode
+                <input formControlName="postcode" [class.invalid]="hasError('address.postcode')" placeholder="2000" />
+                @if (hasError('address.postcode')) { <small class="err">{{ errorMessage('address.postcode') }}</small> }
+            </label>
+        </div>
+    </fieldset>
+
+    <div class="form-actions">
+        <button type="submit" class="btn primary" [disabled]="saving()">
+            {{ saving() ? 'Saving…' : 'Save' }}
+        </button>
+        <a class="btn" routerLink="/patients">Cancel</a>
+    </div>
+</form>
+}

@@ -1,0 +1,165 @@
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+.controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+}
+
+.search {
+    flex: 1;
+    min-width: 220px;
+    padding: .55rem .75rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: .95rem;
+}
+
+.search:focus {
+    outline: 2px solid #2563eb;
+    outline-offset: -1px;
+    border-color: transparent;
+}
+
+.size {
+    font-size: .85rem;
+    color: #475569;
+    display: flex;
+    gap: .4rem;
+    align-items: center;
+}
+
+.size select {
+    padding: .4rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+}
+
+.grid {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .9rem;
+    background: #fff;
+}
+
+.grid th,
+.grid td {
+    padding: .6rem .7rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.grid th {
+    background: #f1f5f9;
+    font-weight: 600;
+    color: #334155;
+    white-space: nowrap;
+}
+
+.grid tbody tr:hover {
+    background: #f8fafc;
+}
+
+.mono {
+    font-variant-numeric: tabular-nums;
+}
+
+.empty {
+    text-align: center;
+    color: #64748b;
+    padding: 2rem;
+}
+
+.actions {
+    white-space: nowrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: .45rem .8rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background: #fff;
+    color: #1e293b;
+    cursor: pointer;
+    font-size: .85rem;
+    text-decoration: none;
+}
+
+.btn:hover:not(:disabled) {
+    background: #f1f5f9;
+}
+
+.btn:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+}
+
+.btn.primary {
+    background: #2563eb;
+    border-color: #2563eb;
+    color: #fff;
+}
+
+.btn.primary:hover {
+    background: #1d4ed8;
+}
+
+.btn.small {
+    padding: .3rem .6rem;
+}
+
+.btn.danger {
+    color: #b91c1c;
+    border-color: #fecaca;
+}
+
+.btn.danger:hover {
+    background: #fef2f2;
+}
+
+.btn.page.current {
+    background: #2563eb;
+    border-color: #2563eb;
+    color: #fff;
+}
+
+.pager {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    gap: .75rem;
+}
+
+.range {
+    font-size: .85rem;
+    color: #64748b;
+}
+
+.pages {
+    display: flex;
+    gap: .3rem;
+    flex-wrap: wrap;
+}
+
+.alert {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #b91c1c;
+    padding: .7rem .9rem;
+    border-radius: 6px;
+    font-size: .9rem;
+}

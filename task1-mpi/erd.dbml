@@ -1,0 +1,69 @@
+
+Table patient {
+  patient_id      uuid      [pk, note: 'UUID, never derived from demographic data']
+  source_system   varchar   [not null, note: 'code of the sending hospital']
+  source_id       varchar   [not null, note: 'record id in the source system']
+
+  given_name      varchar
+  family_name     varchar
+  dob             date
+  gender          varchar
+  phone           varchar
+  email           varchar
+
+  norm_name       varchar   [note: 'normalised value used for matching']
+  norm_phone      varchar
+  norm_email      varchar
+
+  status          varchar   [not null, note: 'ACTIVE | MERGED']
+  merged_into_id  uuid      [ref: > patient.patient_id, note: 'NULL when this record is the surviving one']
+
+  indexes {
+    (source_system, source_id) [unique, name: 'uq_source']
+    (family_name, dob)         [name: 'ix_block_name_dob']
+    norm_phone                 [name: 'ix_block_phone']
+    norm_email                 [name: 'ix_block_email']
+  }
+}
+
+Table patient_identifier {
+  identifier_id       uuid    [pk]
+  patient_id          uuid    [not null, ref: > patient.patient_id]
+  id_type             varchar [not null, note: 'MRN | NATIONAL_ID | PHONE | EMAIL']
+  id_value            varchar [not null]
+  assigning_authority varchar [not null, note: 'which organisation issued this identifier']
+
+  indexes {
+    (id_type, assigning_authority, id_value) [unique, name: 'uq_identifier']
+    (patient_id)                             [name: 'ix_identifier_patient']
+  }
+}
+
+Table patient_link {
+  link_id      uuid      [pk]
+  patient_id_a uuid      [not null, ref: > patient.patient_id, note: 'always the lower of the two ids']
+  patient_id_b uuid      [not null, ref: > patient.patient_id]
+  decision     varchar   [not null, note: 'AUTO_MATCH | REVIEW']
+  score        decimal
+  status       varchar   [not null, note: 'PENDING | CONFIRMED | REJECTED']
+  decided_by   varchar   [note: 'SYSTEM, or the id of the user who decided']
+  decided_at   timestamp
+
+  indexes {
+    (patient_id_a, patient_id_b) [unique, name: 'uq_pair']
+  }
+}
+
+Table match_audit {
+  audit_id             uuid      [pk]
+  incoming_patient_id  uuid      [not null, ref: > patient.patient_id]
+  candidate_patient_id uuid      [ref: > patient.patient_id]
+  decision             varchar   [not null, note: 'AUTO_MATCH | REVIEW | NO_MATCH']
+  score                decimal
+  reasons              json      [note: 'which fields agreed or conflicted']
+  created_at           timestamp [not null]
+
+  indexes {
+    (incoming_patient_id) [name: 'ix_audit_incoming']
+  }
+}

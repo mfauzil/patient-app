@@ -1,0 +1,78 @@
+<div class="toolbar">
+    <h1>Patients</h1>
+    <a class="btn primary" routerLink="/patients/new">+ New Patient</a>
+</div>
+
+<div class="controls">
+    <input type="search" class="search" placeholder="Search by PID or patient name…"
+        (input)="onSearchInput($any($event.target).value)" />
+
+    <label class="size">
+        Rows per page
+        <select (change)="changeSize($any($event.target).value)">
+            <option value="5">5</option>
+            <option value="10" selected>10</option>
+            <option value="25">25</option>
+        </select>
+    </label>
+</div>
+
+@if (error()) {
+<p class="alert">{{ error() }}</p>
+}
+
+<table class="grid">
+    <thead>
+        <tr>
+            <th>PID</th>
+            <th>Name</th>
+            <th>Date of Birth</th>
+            <th>Gender</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th class="actions">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (loading()) {
+        <tr>
+            <td colspan="7" class="empty">Loading…</td>
+        </tr>
+        } @else if (patients().length === 0) {
+        <tr>
+            <td colspan="7" class="empty">No matching patients</td>
+        </tr>
+        } @else {
+        @for (p of patients(); track p.id) {
+        <tr>
+            <td class="mono">{{ p.pid }}</td>
+            <td>{{ p.firstName }} {{ p.lastName }}</td>
+            <td>{{ p.dateOfBirth | date: 'dd MMM yyyy' }}</td>
+            <td>{{ p.gender }}</td>
+            <td class="mono">{{ p.phoneNo }}</td>
+            <td>{{ p.address.suburb }}, {{ p.address.state }} {{ p.address.postcode }}</td>
+            <td class="actions">
+                <a class="btn small" [routerLink]="['/patients', p.id, 'edit']">Edit</a>
+                <button class="btn small danger" (click)="remove(p)">Delete</button>
+            </td>
+        </tr>
+        }
+        }
+    </tbody>
+</table>
+
+<div class="pager">
+    <span class="range">{{ rangeText() }}</span>
+
+    @if (totalPages() > 1) {
+    <div class="pages">
+        <button class="btn small" [disabled]="isFirst()" (click)="goToPage(page() - 1)">‹ Previous</button>
+
+        @for (n of pageNumbers(); track n) {
+        <button class="btn small page" [class.current]="n === page()" (click)="goToPage(n)">{{ n + 1 }}</button>
+        }
+
+        <button class="btn small" [disabled]="isLast()" (click)="goToPage(page() + 1)">Next ›</button>
+    </div>
+    }
+</div>

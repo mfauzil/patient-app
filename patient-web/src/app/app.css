@@ -1,0 +1,16 @@
+.topbar {
+    background: #0f172a;
+    color: #fff;
+    padding: .85rem 1.5rem;
+}
+
+.brand {
+    font-weight: 600;
+    letter-spacing: .02em;
+}
+
+.page {
+    max-width: 1100px;
+    margin: 1.5rem auto;
+    padding: 0 1.5rem;
+}

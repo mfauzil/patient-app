@@ -1,0 +1,7 @@
+# Build output
+task1-mpi/out/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
